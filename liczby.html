@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gra w Zgadywanie Liczb</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <h1>Zgadnij Liczbę!</h1>
+    <p>Wybierz liczbę od 1 do 100</p>
+    <input type="number" id="guess" min="1" max="100">
+    <button onclick="checkGuess()">Zgadnij!</button>
+    <p id="result"></p>
+    
+    <button id="strona-glowna" style="display: block; margin: 10px 0; width: 30%;" onclick="window.location.href='index.html'">Powrót do strony głównej</button>
+    <button id="powrot" style="display: block; margin: 0px 0; width: 30%;" onclick="window.location.href='Przekierowywanie.html'">Wróć</button>
+
+    <h2 id="previousGuessesHeader" style="display: none;">Ostatnie zgadywane liczby:</h2>
+    <div id="previousGuesses" class="previous-guesses" style="display: none;"></div>
+
+    <script>
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        const previousGuesses = [];
+    
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById('guess').value);
+            const resultElement = document.getElementById('result');
+            const previousGuessesElement = document.getElementById('previousGuesses');
+            const previousGuessesHeader = document.getElementById('previousGuessesHeader');
+
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                resultElement.innerHTML = "Proszę podać liczbę w przedziale od 1 do 100.";
+                return;
+            }
+
+            resultElement.classList.remove('oscillate');
+            void resultElement.offsetWidth;
+            resultElement.classList.add('oscillate'); 
+
+            if (userGuess < randomNumber) {
+                resultElement.innerHTML = "Za nisko! Spróbuj ponownie.";
+            } else if (userGuess > randomNumber) {
+                resultElement.innerHTML = "Za wysoko! Spróbuj ponownie.";
+            } else {
+                resultElement.innerHTML = "Brawo! Zgadłeś liczbę!";
+            }
+
+            previousGuesses.push(userGuess);
+            if (previousGuesses.length > 3) {
+                previousGuesses.shift();
+            }
+
+            previousGuessesElement.innerHTML = '';
+            previousGuesses.forEach(guess => {
+                const guessItem = document.createElement('div');
+                guessItem.className = 'guess-item';
+                guessItem.textContent = guess;
+                previousGuessesElement.prepend(guessItem); 
+            });
+
+            if (previousGuesses.length === 1) {
+                previousGuessesHeader.style.display = 'block';
+                previousGuessesElement.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

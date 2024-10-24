@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przekierowywanie</title>
+    <link rel="stylesheet" href="style3.css"/>
+</head>
+<body>
+    <div class="button-container">
+        <h1>Lovki Misiaku ❤️</h1>
+        <div>
+            <button id="liczby" class="button">Gra w Zgadywanie Liczb</button>
+            <button id="pilka" class="button">Gra Złap Piłkę</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('liczby').onclick = function() {
+            window.location.href = 'liczby.html';
+        };
+
+        document.getElementById('pilka').onclick = function() {
+            window.location.href = 'gra.html';
+        };
+    </script>
+</body>
+</html>
