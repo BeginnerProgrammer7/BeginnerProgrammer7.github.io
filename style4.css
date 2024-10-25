@@ -68,7 +68,7 @@ h1 {
     cursor: pointer;
 }
 
-#strona-glowna, #powrot {
+#powrot {
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -84,7 +84,7 @@ h1 {
     animation: oscillate 2s infinite;
 }
 
-#strona-glowna:hover, #powrot:hover {
+#powrot:hover {
     background-color: #0056b3;
 }
 
