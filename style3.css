@@ -16,7 +16,7 @@ body {
     margin-top: 20px;
 }
 
-h1, .button {
+.button {
     animation: pulse 1.5s infinite;
 }
 

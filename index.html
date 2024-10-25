@@ -1,45 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urodzinki</title>
-    <link rel="stylesheet" href="style.css"/>
+    <title>Przekierowywanie</title>
+    <link rel="stylesheet" href="style3.css"/>
 </head>
 <body>
-    <h1>Odliczanie do urodzin!</h1>
-    <div id="countdown"></div>
-    <button id="goToNextPage" style="display:none;">Prezent (coś w tym stylu XD)</button>
-
+    <div class="button-container">
+        <div>
+            <button id="liczby" class="button">Gra w Zgadywanie Liczb</button>
+            <button id="pilka" class="button">Gra Złap Piłkę</button>
+        </div>
+    </div>
     <script>
-        const birthday = new Date('2024-10-25T00:00:00');
-
-        function updateCountdown() {
-            const now = new Date();
-            const timeDifference = birthday - now;
-
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-            document.getElementById('countdown').innerHTML = 
-                ` ${hours} godzin, ${minutes} minut, ${seconds} sekund do urodzin!`;
-
-                // ${days} dni,
-
-            if (timeDifference < 0) {
-                clearInterval(interval);
-                document.getElementById('countdown').innerHTML = "Wszystkiego Najlepszego !!! <3";
-                document.getElementById('goToNextPage').style.display = 'block';
-            }
-        }
-
-        document.getElementById('goToNextPage').onclick = function() {
-            window.location.href = 'przekierowywanie.html';
+        document.getElementById('liczby').onclick = function() {
+            window.location.href = 'liczby.html';
         };
 
-        const interval = setInterval(updateCountdown, 1000);
+        document.getElementById('pilka').onclick = function() {
+            window.location.href = 'gra.html';
+        };
     </script>
 </body>
 </html>
